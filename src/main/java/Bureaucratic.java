@@ -1,5 +1,7 @@
 public final class Bureaucratic extends Insectoid implements Toxic {
 
+    //порядок названий разный для корректного зучания на русском
+
     Bureaucratic() {
         super();
         setName("Плюмбус");
