@@ -2,7 +2,7 @@ public final class Incredible extends Snake implements Boxer {
 
     Incredible() {
         super();
-        setName("Кольт");
+        setName("Шпрот");
         setCharClass("невероятный " + raceName + "-" + CLASS);
     }
 

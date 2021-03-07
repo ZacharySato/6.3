@@ -17,26 +17,27 @@ public class Battle {
     }
 
     public void initiate() {
+        //какого-то специального баланса нет, просто рандом
         System.out.println("намечается потасовка, " + unitA.getCharClass() + " " + unitA.getName() + " зол не на шутку");
         System.out.println(unitB.getCharClass() + " " + unitB.getName() + " так же зол, а то и больше");
         System.out.println("итак:");
         unitA.attackA();
-        damageDealtA = DICE.nextInt(LIMIT / 2);
+        damageDealtA = throwDice();
         unitB.protect();
-        damageDealtA -= DICE.nextInt(LIMIT / 2);
+        damageDealtA -= throwDice();
         unitB.attackA();
-        damageDealtB = DICE.nextInt(LIMIT / 2);
+        damageDealtB = throwDice();
         unitA.protect();
-        damageDealtB -= DICE.nextInt(LIMIT / 2);
+        damageDealtB -= throwDice();
         unitA.attackB();
-        damageDealtA += DICE.nextInt(LIMIT / 2);
+        damageDealtA += throwDice();
         unitB.attackB();
-        damageDealtB += DICE.nextInt(LIMIT / 2);
+        damageDealtB += throwDice();
         criticalDamageCheck();
     }
 
     private void criticalDamageCheck() {
-        System.out.println("что в итоге?");
+        System.out.println("в итоге:");
         if (damageDealtA < unitBHealthGap && damageDealtB < unitAHealthGap) {
             draw();
         }
@@ -46,7 +47,7 @@ public class Battle {
         }
         if (damageDealtA >= unitBHealthGap) {
             System.out.println(unitB.getName() + TRY_TO_RUN);
-            if (DICE.nextInt(LIMIT) < LIMIT / 2) {
+            if (DICE.nextInt(LIMIT) < LIMIT / 2 + 1) {
                 unitB.die();
             } else {
                 unitB.run();
@@ -55,7 +56,7 @@ public class Battle {
         }
         if (damageDealtB >= unitAHealthGap) {
             System.out.println(unitA.getName() + TRY_TO_RUN);
-            if (DICE.nextInt(LIMIT) < LIMIT / 2) {
+            if (DICE.nextInt(LIMIT) < LIMIT / 2 + 1) {
                 unitA.die();
             } else {
                 unitA.run();
@@ -65,11 +66,15 @@ public class Battle {
     }
 
     private void draw() {
-        if (DICE.nextInt(LIMIT) < (LIMIT / 2 + 1)) {
+        if (DICE.nextInt(LIMIT) < (LIMIT / 2)) {
             System.out.println("какая удача, скидки в рюмочной неподалеку прерывают поединок");
         } else {
             System.out.println("плот твист: это один персонаж, а не два, и он продаёт мыло");
         }
         System.exit(0);
+    }
+
+    private int throwDice() {
+        return DICE.nextInt(LIMIT / 2);
     }
 }

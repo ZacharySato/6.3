@@ -1,4 +1,5 @@
 public abstract class Race {
+    //у конкретных классов рас получается много похожего кода, выделил в отдельный общий
     private String name;
     private String charClass;
 
@@ -15,7 +16,7 @@ public abstract class Race {
 
     void setCharClass(String cc) {
         if (cc == null) {
-            this.charClass = "бродяга";
+            this.charClass = "непонятный бродяга";
         }
         this.charClass = cc;
     }
