@@ -19,7 +19,7 @@ public final class Bureaucratic extends Insectoid implements Toxic {
     }
 
     public void run() {
-        System.out.println("для продолжения битвы " + getCharClass() + " требует пердоставить справку по форме");
+        System.out.println("для продолжения битвы " + getName() + " требует пердоставить справку по форме");
     }
 
     public void attackA() {
