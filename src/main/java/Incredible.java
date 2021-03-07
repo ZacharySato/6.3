@@ -1,7 +1,5 @@
 public final class Incredible extends Snake implements Boxer {
 
-    //порядок названий разный для корректного зучания на русском
-
     Incredible() {
         super();
         setName("Шпрот");
